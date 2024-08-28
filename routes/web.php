@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('permissions', App\Http\Controllers\PermissionController::class);
 
+Route::resource('roles', App\Http\Controllers\RoleController::class);
+Route::get('roles/{roleId}/give-permissions', [App\Http\Controllers\RoleController::class, 'addPermissionToRole'])->name('givePermissions');
+Route::put('roles/{roleId}/give-permissions', [App\Http\Controllers\RoleController::class, 'givePermissionToRole'])->name('givePermissions.store');
+
 Route::get('/', function () {
     return view('welcome');
 });
