@@ -13,8 +13,20 @@
                 <!-- Navigation Links -->
                 <div class="d-none d-sm-flex align-items-center ms-sm-4 mb-3">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Home') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index')">
+                        {{ __('Roles') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                        {{ __('Users') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('permissions.index')" :active="request()->routeIs('permissions.index')">
+                        {{ __('Permissions') }}
+                    </x-nav-link>
+
                 </div>
             </div>
 
@@ -24,9 +36,7 @@
                     <x-slot name="trigger">
                         <button
                                 class="d-inline-flex align-items-center text-small fw-medium lh-sm text-secondary hover:text-dark rounded border-0 bg-white px-3 py-2 transition focus:outline-none">
-                            <div>@auth {{ Auth::user()->name }}
-                                @else
-                                Anonimus @endauth
+                            <div>@auth {{ Auth::user()->name }} @endauth
                             </div>
                             <div class="ms-1">
                                 <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
@@ -73,9 +83,7 @@
         <!-- Responsive Settings Options -->
         <div class="border-t border-gray-200 pb-1 pt-4">
             <div class="px-4">
-                <div class="text-base font-medium text-gray-800">@auth {{ Auth::user()->name }}
-                    @else
-                    Anonimus @endauth </div>
+                <div class="text-base font-medium text-gray-800">@auth {{ Auth::user()->name }} @endauth </div>
                 <div class="text-sm font-medium text-gray-500">@auth {{ Auth::user()->email }} @endauth
                 </div>
             </div>
