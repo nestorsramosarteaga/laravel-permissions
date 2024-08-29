@@ -1,13 +1,18 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 
 Route::resource('permissions', App\Http\Controllers\PermissionController::class);
 
-Route::resource('roles', App\Http\Controllers\RoleController::class);
+Route::resource('roles', RoleController::class);
 Route::get('roles/{roleId}/give-permissions', [App\Http\Controllers\RoleController::class, 'addPermissionToRole'])->name('givePermissions');
 Route::put('roles/{roleId}/give-permissions', [App\Http\Controllers\RoleController::class, 'givePermissionToRole'])->name('givePermissions.store');
+
+Route::resource('users', UserController::class);
+
 
 Route::get('/', function () {
     return view('welcome');

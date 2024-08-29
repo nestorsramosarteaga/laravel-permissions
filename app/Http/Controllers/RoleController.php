@@ -33,7 +33,7 @@ class RoleController extends Controller
             'name' => $request->name
         ]);
 
-        return to_route('roles.index')->with('status','Role Created Successfuly');
+        return to_route('roles.index')->with('status','Role Created Successfully');
     }
 
     public function edit(Role $role)
@@ -53,13 +53,13 @@ class RoleController extends Controller
 
         $role->update($validated);
 
-        return to_route('roles.index')->with('status','Role Updated Successfuly');
+        return to_route('roles.index')->with('status','Role Updated Successfully');
     }
 
     public function destroy(Role $role)
     {
         $role->delete();
-        return to_route('roles.index')->with('status','Role Deleted Successfuly');
+        return to_route('roles.index')->with('status','Role Deleted Successfully');
     }
 
     public function addPermissionToRole($roleId)

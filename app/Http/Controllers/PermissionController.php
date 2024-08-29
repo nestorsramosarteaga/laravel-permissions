@@ -32,7 +32,7 @@ class PermissionController extends Controller
             'name' => $request->name
         ]);
 
-        return to_route('permissions.index')->with('status','Permission Created Successfuly');
+        return to_route('permissions.index')->with('status','Permission Created Successfully');
     }
 
     public function edit(Permission $permission)
@@ -52,13 +52,13 @@ class PermissionController extends Controller
 
         $permission->update($validated);
 
-        return to_route('permissions.index')->with('status','Permission Updated Successfuly');
+        return to_route('permissions.index')->with('status','Permission Updated Successfully');
     }
 
     public function destroy(Permission $permission)
     {
         $permission->delete();
-        return to_route('permissions.index')->with('status','Permission Deleted Successfuly');
+        return to_route('permissions.index')->with('status','Permission Deleted Successfully');
     }
 
 }
