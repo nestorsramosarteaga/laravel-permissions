@@ -7,8 +7,21 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
+
+class UserController extends Controller  implements HasMiddleware
 {
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('permission:View user', only: ['index']),
+            new Middleware('permission:Create user', only:['create','store']),
+            new Middleware('permission:Update user', only:['edit','update']),
+            new Middleware('permission:Delete user', only:['destroy']),
+        ];
+    }
+
     public function index()
     {
         $users = User::get();
